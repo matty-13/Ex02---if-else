@@ -12,6 +12,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(60);
   noFill();
+  strokeWeight(2);
   stroke(0);
   circleColor = color(0);
 }
@@ -68,7 +69,8 @@ function draw() {
         y: mouseY,
         velocityX: random(-80, 80),
         velocityY: random(-80, 80),
-        diameter: random(5, 20),
+        radius: random(2.5, 10),
+        radiusGrowth: random(2, 4),
         color: color(random(256), random(256), random(256)),
         createdAt: createdAt
       });
@@ -100,7 +102,7 @@ function draw() {
     circle(
       temporaryCircle.x + temporaryCircle.velocityX * elapsed / 1000,
       temporaryCircle.y + temporaryCircle.velocityY * elapsed / 1000,
-      temporaryCircle.diameter
+      (temporaryCircle.radius + temporaryCircle.radiusGrowth * elapsed / 1000) * 2
     );
   }
 
